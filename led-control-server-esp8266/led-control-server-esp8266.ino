@@ -53,7 +53,7 @@ loop() {
 
         /* Check if there is a GET request in the current line */
         if (line.indexOf("GET /?") != -1) {
-          String command = line.substring(line.indexOf("GET /?") + strlen("GET /?"), line.indexOf("HTTP/1.1"));;
+          String command = line.substring(line.indexOf("GET /?text=") + strlen("GET /?text="), line.indexOf("HTTP/1.1"));;
           Serial.println(command);
         }
         
@@ -88,11 +88,9 @@ prepare_html_page(void) {
     "<title>LED Control</title>" +
     "<h1 align=center><font color=003FFF><span>LED Control</font></span></h1>\r\n" +
 
-    "<p align=center><a href=\"?state=OFF\"><button>OFF</button></a>&nbsp: <a href=\"?state=ON\"><button>ON</button></a></p>\r\n" +
-
     "<form align=center>" +
-    "<label align=center for=\"brightness\">Brightness (between 0 and 100): </label>" +
-    "<input type=\"number\" id=\"brightness\" name=\"brightness\" min=\"1\" max=\"100\">" +
+    "<label align=center for=\"text\">Brightness: </label>" +
+    "<input type=\"text\" id=\"text\" name=\"text\">" +
     "<input type=\"submit\" value=\"Send\">" +
     "</form>" +
     
